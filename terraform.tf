@@ -12,15 +12,15 @@ terraform {
     # }
   }
 
-    backend "s3" {
-      bucket = "globo-terraform-state"
-      key    = "application_config/terraform.tfstate"
-      region = "us-east-1"
-      # dynamodb_table = "globo-terraform-locks"
-      use_lockfile = true
-      encrypt      = true
+  backend "s3" {
+    bucket = "globo-terraform-state"
+    key    = "application_config/terraform.tfstate"
+    region = "us-east-1"
+    # dynamodb_table = "globo-terraform-locks"
+    use_lockfile = true
+    encrypt      = true
 
-    }
+  }
 
 
 }
