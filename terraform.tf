@@ -5,6 +5,11 @@ terraform {
       # version = "~>5.0"
       version = "~> 6.0"
     }
+
+    tfe = {
+      source  = "hashicorp/tfe"
+      version = "~> 0.35"
+    }
   }
 
   #   backend "s3" {
@@ -16,5 +21,6 @@ terraform {
   #     encrypt      = true
 
   #   }
+
 
 }
