@@ -128,3 +128,11 @@ resource "aws_alb_target_group_attachment" "main" {
   target_group_arn = aws_lb_target_group.main.arn
   target_id        = aws_instance.main[count.index].id
 }
+
+# resource "aws_s3_bucket" "globo-terraform-state" {
+#   bucket = "globo-terraform-state"
+
+
+#   tags = local.common_tags
+
+# }
