@@ -32,6 +32,7 @@ variable "instance_type" {
   default     = "t3.micro"
 }
 
+# API key is from TF cloud
 variable "api_key" {
   type        = string
   description = "(Required) API key for web app to talk to SaaS platform."
