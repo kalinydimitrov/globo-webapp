@@ -2,12 +2,12 @@ name: 'Terraform App Config'
 
 on:
   push:
-    branches: [ main ]
+    branches: [ ** ]
   #   paths:
   #     - 'application_config/**'
   #     - '.github/workflows/terraform.yml'
   pull_request_target:
-    branches: [ main ]
+    branches: [ ** ]
   #   paths:
   #     - 'application_config/**'
   #     - '.github/workflows/terraform.yml'
@@ -35,6 +35,7 @@ jobs:
     defaults:
       run:
         shell: bash
+        working-directory: ./application_config
 
     steps:
     # Checkout the repository to the GitHub Actions runner
