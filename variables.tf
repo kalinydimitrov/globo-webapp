@@ -8,16 +8,19 @@ variable "region" {
 variable "prefix" {
   type        = string
   description = "(Required) Prefix to use for all resources in this module."
+  default     = "globo"
 }
 
 variable "environment" {
   type        = string
   description = "(Required) Environment of all resources"
+  default     = "dev"
 }
 
 variable "billing_code" {
   type        = string
   description = "(Required) Billing code for network resources"
+  default     = "12345"
 }
 
 # Application variables
@@ -36,6 +39,7 @@ variable "instance_type" {
 variable "api_key" {
   type        = string
   description = "(Required) API key for web app to talk to SaaS platform."
+  default     = "12345"
 }
 
 # variable "public_subnets" {
@@ -53,16 +57,19 @@ variable "api_key" {
 variable "tfe_organization" {
   type        = string
   description = "(Required) The name of the TFE organization where the networking workspace is located."
+  default     = "deep-dive-globo"
 
 }
 
 variable "tfe_workspace_name" {
   type        = string
   description = "(Required) The name of the TFE workspace where the networking configuration is deployed."
+  default     = "web-network-dev"
 
 }
 
 variable "playbook_repository" {
+  type        = string
   description = "(Required) URI of Ansible playbook repository."
   default     = "https://github.com/ned1313/ansible-playbook-nginx.git"
 }
