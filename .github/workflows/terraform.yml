@@ -18,15 +18,13 @@ jobs:
     name: 'Terraform'
     runs-on: ubuntu-latest
     env:
-      TF_VAR_prefix:              ${{ vars.PREFIX }}
-      TF_VAR_environment:         ${{ vars.ENVIRONMENT }}
-      TF_VAR_billing_code:        ${{ vars.BILLING_CODE }}
-      TF_VAR_api_key:             ${{ vars.API_KEY }}
-      TF_VAR_public_subnets:      '["subnet-0ed7df4ca93ca2fc1", "subnet-04a597a9866723076",  "subnet-0b9858708dcd86367"]''
+      TF_VAR_prefix:              '["globo"]'
+      TF_VAR_environment:         '["dev"]'
+      TF_VAR_billing_code:        '["12345"]'
+      TF_VAR_api_key:             '["12345"]'
+      TF_VAR_public_subnets:      '["subnet-0ed7df4ca93ca2fc1", "subnet-04a597a9866723076",  "subnet-0b9858708dcd86367"]'
       TF_VAR_vpc_id:              '["vpc-0c87185dea07ff44a"]'
-      TF_VAR_tfe_organization:    ${{ vars.TFE_ORGANIZATION }}
-      TF_VAR_tfe_workspace_name:  ${{ vars.TFE_WORKSPACE_NAME }}
-      TF_VAR_playbook_repository: ${{ vars.PLAYBOOK_REPOSITORY }}
+      TF_VAR_playbook_repository: '["https://github.com/ned1313/ansible-playbook-nginx.git"]'
 
     # Use the Bash shell regardless whether the GitHub Actions runner is 
     # ubuntu-latest, macos-latest, or windows-latest
