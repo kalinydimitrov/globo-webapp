@@ -1,4 +1,3 @@
-
 variable "region" {
   type        = string
   description = "(Optional) AWS Region to deploy in. Defaults to us-east-1."
@@ -8,22 +7,26 @@ variable "region" {
 variable "prefix" {
   type        = string
   description = "(Required) Prefix to use for all resources in this module."
+  default     = "globo"
 }
 
 variable "environment" {
   type        = string
   description = "(Required) Environment of all resources"
+  default     = "dev"
 }
 
 variable "billing_code" {
   type        = string
   description = "(Required) Billing code for network resources"
+  default     = "12345"
 }
 
 # Application variables
-
 variable "ip_range" {
-  default = "0.0.0.0/0"
+  type        = string
+  description = "CIDR range allowed to access HTTP/SSH where applicable."
+  default     = "0.0.0.0/0"
 }
 
 variable "instance_type" {
@@ -32,38 +35,25 @@ variable "instance_type" {
   default     = "t3.micro"
 }
 
-# API key is from TF cloud
 variable "api_key" {
   type        = string
   description = "(Required) API key for web app to talk to SaaS platform."
+  default     = "12345"
 }
 
-# variable "public_subnets" {
-#   type        = list(string)
-#   description = "(Required) List of subnet IDs for EC2 instance deployments."
-# }
-
-# variable "vpc_id" {
-#   type        = string
-#   description = "(Required) VPC ID of VPC for application deployment."
-# }
-
-
-# TFC variables
-variable "tfe_organization" {
-  type        = string
-  description = "(Required) The name of the TFE organization where the networking workspace is located."
-
+# >>> Replacing tfe_outputs with direct inputs
+variable "public_subnets" {
+  type        = list(string)
+  description = "(Required) List of subnet IDs for EC2 instance deployments and the ALB."
 }
 
-variable "tfe_workspace_name" {
+variable "vpc_id" {
   type        = string
-  description = "(Required) The name of the TFE workspace where the networking configuration is deployed."
-
+  description = "(Required) VPC ID for application deployment."
 }
 
 variable "playbook_repository" {
+  type        = string
   description = "(Required) URI of Ansible playbook repository."
+  default     = "https://github.com/ned1313/ansible-playbook-nginx.git"
 }
-
-
