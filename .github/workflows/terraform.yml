@@ -6,7 +6,7 @@ on:
   #   paths:
   #     - 'application_config/**'
   #     - '.github/workflows/terraform.yml'
-  pull_request_target:
+  pull_request:
     branches: [ ** ]
   #   paths:
   #     - 'application_config/**'
@@ -22,13 +22,13 @@ jobs:
     name: 'Terraform'
     runs-on: ubuntu-latest
     env:
-      TF_VAR_prefix: ${{ secrets.PREFIX }}
-      TF_VAR_environment: ${{ secrets.ENVIRONMENT }}
-      TF_VAR_billing_code: ${{ secrets.BILLING_CODE }}
-      TF_VAR_api_key: ${{ secrets.API_KEY }}
-      TF_VAR_tfe_organization: ${{ secrets.TFE_ORGANIZATION }}
-      TF_VAR_tfe_workspace_name: ${{ secrets.TFE_WORKSPACE_NAME }}
-      TF_VAR_playbook_repository: ${{ secrets.PLAYBOOK_REPOSITORY }}
+      TF_VAR_prefix:              ${{ vars.PREFIX }}
+      TF_VAR_environment:         ${{ vars.ENVIRONMENT }}
+      TF_VAR_billing_code:        ${{ vars.BILLING_CODE }}
+      TF_VAR_api_key:             ${{ vars.API_KEY }}
+      TF_VAR_tfe_organization:    ${{ vars.TFE_ORGANIZATION }}
+      TF_VAR_tfe_workspace_name:  ${{ vars.TFE_WORKSPACE_NAME }}
+      TF_VAR_playbook_repository: ${{ vars.PLAYBOOK_REPOSITORY }}
 
     # Use the Bash shell regardless whether the GitHub Actions runner is 
     # ubuntu-latest, macos-latest, or windows-latest
