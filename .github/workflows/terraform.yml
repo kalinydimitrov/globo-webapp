@@ -2,12 +2,12 @@ name: 'Terraform App Config'
 
 on:
   push:
-  #   branches: [ main ]
+    branches: [ main ]
   #   paths:
   #     - 'application_config/**'
   #     - '.github/workflows/terraform.yml'
-  # pull_request_target:
-  #   branches: [ main ]
+  pull_request_target:
+    branches: [ main ]
   #   paths:
   #     - 'application_config/**'
   #     - '.github/workflows/terraform.yml'
@@ -61,3 +61,17 @@ jobs:
       id: validate
       if: (success() || failure())
       run: terraform validate
+
+    # Run a terraform plan to create an execution plan
+    - name: Terraform Plan
+      run: terraform plan -no-color -out=tf.plan
+
+    - name: Upload plan
+      uses: actions/upload-artifact@v4
+      with:
+        name: tf-plan
+        path: tf.plan
+
+    - name: Terraform Apply
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: terraform apply -no-color -input=false tf.plan
