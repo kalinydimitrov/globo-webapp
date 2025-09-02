@@ -6,11 +6,7 @@ terraform {
       version = "~> 6.0"
     }
 
-    # tfe = {
-    #   source  = "hashicorp/tfe"
-    #   version = "~> 0.35"
-    # }
-  }
+}
 
   backend "s3" {
     bucket = "globo-terraform-state"
