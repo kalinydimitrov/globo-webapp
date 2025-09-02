@@ -2,15 +2,11 @@ name: 'Terraform App Config'
 
 on:
   push:
-    branches: [ main ]
-  #   paths:
-  #     - 'application_config/**'
-  #     - '.github/workflows/terraform.yml'
-  pull_request_target:
-    branches: [ main ]
-  #   paths:
-  #     - 'application_config/**'
-  #     - '.github/workflows/terraform.yml'
+    branches: [ '**' ]
+  
+  pull_request:
+    branches: [ '**' ]
+  
 
 env:
   TF_LOG: INFO
@@ -21,12 +17,21 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
+    env:
+      TF_VAR_prefix:              globo
+      TF_VAR_environment:         dev
+      TF_VAR_billing_code:        "12345"
+      TF_VAR_api_key:             "12345"
+      TF_VAR_public_subnets:      '["subnet-0ed7df4ca93ca2fc1", "subnet-04a597a9866723076",  "subnet-0b9858708dcd86367"]'
+      TF_VAR_vpc_id:              vpc-0c87185dea07ff44a
+      TF_VAR_playbook_repository: https://github.com/ned1313/ansible-playbook-nginx.git
 
     # Use the Bash shell regardless whether the GitHub Actions runner is 
     # ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
         shell: bash
+        # working-directory: .
 
     steps:
     # Checkout the repository to the GitHub Actions runner
@@ -37,9 +42,9 @@ jobs:
     - name: Configure AWS credentials (keys)
       uses: aws-actions/configure-aws-credentials@v4
       with:
-         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-         aws-region: ${{ env.AWS_REGION }}
+         aws-region:            ${{ env.AWS_REGION }}
 
     # Install the preferred version of Terraform CLI of
     - name: Setup Terraform
