@@ -62,10 +62,7 @@ variable "tfe_workspace_name" {
 
 }
 
-# variable "playbook_repository" {
-#   description = "(Required) URI of Ansible playbook repository."
-# }
-
-variable "PLAYBOOK_REPOSITORY" {
+variable "playbook_repository" {
   description = "(Required) URI of Ansible playbook repository."
+  default     = "https://github.com/ned1313/ansible-playbook-nginx.git"
 }
