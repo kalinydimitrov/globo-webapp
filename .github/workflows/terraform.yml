@@ -21,6 +21,14 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
+    env:
+      TF_VAR_prefix: ${{ secrets.PREFIX }}
+      TF_VAR_environment: ${{ secrets.ENVIRONMENT }}
+      TF_VAR_billing_code: ${{ secrets.BILLING_CODE }}
+      TF_VAR_api_key: ${{ secrets.API_KEY }}
+      TF_VAR_tfe_organization: ${{ secrets.TFE_ORGANIZATION }}
+      TF_VAR_tfe_workspace_name: ${{ secrets.TFE_WORKSPACE_NAME }}
+      TF_VAR_playbook_repository: ${{ secrets.PLAYBOOK_REPOSITORY }}
 
     # Use the Bash shell regardless whether the GitHub Actions runner is 
     # ubuntu-latest, macos-latest, or windows-latest
