@@ -62,4 +62,8 @@ variable "tfe_workspace_name" {
 
 }
 
+variable "playbook_repository" {
+  description = "(Required) URI of Ansible playbook repository."
+}
+
 
