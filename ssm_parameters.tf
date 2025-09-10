@@ -36,9 +36,16 @@ resource "aws_iam_policy" "ssm_access" {
 
 }
 
-resource "aws_iam_policy_attachment" "ssm_access" {
-  name       = aws_iam_policy.ssm_access.name
-  roles      = [var.ec2_role_name] # list of roles to attach the policy to
+# resource "aws_iam_policy_attachment" "ssm_access" {
+#   name       = aws_iam_policy.ssm_access.name
+#   roles      = [var.ec2_role_name] # list of roles to attach the policy to
+#   policy_arn = aws_iam_policy.ssm_access.arn
+
+# }
+
+# the new attachment – stable and without "empty result"
+resource "aws_iam_role_policy_attachment" "ssm_access" {
+  role       = var.ec2_role_name
   policy_arn = aws_iam_policy.ssm_access.arn
 
 }
