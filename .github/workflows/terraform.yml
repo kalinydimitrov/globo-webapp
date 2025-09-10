@@ -12,6 +12,8 @@ env:
   TF_LOG: INFO
   TF_INPUT: false
   AWS_REGION: us-east-1
+  TF_VAR_api_key_secret_id: ${{ secrets.API_KEY_SECRET_ID }}
+  TF_VAR_ec2_role_name:     ${{ secrets.EC2_ROLE_NAME }}
 
 jobs:
   terraform:
