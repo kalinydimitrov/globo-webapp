@@ -66,6 +66,6 @@ variable "playbook_repository" {
 variable "ec2_role_name" {
   type        = string
   description = "(Required) Name of the IAM role to attach to the EC2 instance."
-  # default     = "globo-webapp-role"
+  default     = "globo-webapp-role"
 
 }
