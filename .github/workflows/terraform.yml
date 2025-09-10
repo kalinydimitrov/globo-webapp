@@ -22,8 +22,8 @@ jobs:
       TF_VAR_environment:         dev
       TF_VAR_billing_code:        "12345"
       TF_VAR_api_key:             "12345"
-      TF_VAR_public_subnets:      '["subnet-0ed7df4ca93ca2fc1", "subnet-04a597a9866723076",  "subnet-0b9858708dcd86367"]'
-      TF_VAR_vpc_id:              vpc-0c87185dea07ff44a
+      TF_VAR_public_subnets:      '["subnet-031802bb7de7b4ca7", "subnet-0a4f9cc3a5dc65eab",  "subnet-0357664f622896874"]'
+      TF_VAR_vpc_id:              vpc-0475646a07e5dffd5
       TF_VAR_playbook_repository: https://github.com/ned1313/ansible-playbook-nginx.git
 
     # Use the Bash shell regardless whether the GitHub Actions runner is 
