@@ -35,10 +35,15 @@ variable "instance_type" {
   default     = "t3.micro"
 }
 
-variable "api_key" {
+# variable "api_key" {
+#   type        = string
+#   description = "(Required) API key for web app to talk to SaaS platform."
+#   default     = "12345"
+# }
+
+variable "api_key_secret_id" {
   type        = string
-  description = "(Required) API key for web app to talk to SaaS platform."
-  default     = "12345"
+  description = "(Required) Secret ID for the API key for web app to talk to SaaS platform."
 }
 
 # >>> Replacing tfe_outputs with direct inputs
@@ -56,4 +61,11 @@ variable "playbook_repository" {
   type        = string
   description = "(Required) URI of Ansible playbook repository."
   default     = "https://github.com/ned1313/ansible-playbook-nginx.git"
+}
+
+variable "ec2_role_name" {
+  type        = string
+  description = "(Required) Name of the IAM role to attach to the EC2 instance."
+  # default     = "globo-webapp-role"
+
 }
